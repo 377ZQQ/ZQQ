@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 所以这里直接写 'img/文件名.png' 即可
     // ==========================================
     const myExistingWorks = [
-        'img/载入页1.png',
-        'img/载入页2.png',
-        'img/avemujica直播间.png'
+        'img/saber1.png',
+        'img/saber2.png'
     ];
 
     // 通用渲染函数
@@ -64,3 +63,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.onclick = () => lightbox.style.display = 'none';
     if (lightbox) lightbox.onclick = (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; };
 });
+
