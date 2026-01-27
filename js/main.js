@@ -1,11 +1,24 @@
-// 当页面所有资源加载完后执行
-window.onload = function() {
+// 1. 加载层逻辑
+window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    // 模拟载入时间：2.5秒后切入直播间
     setTimeout(() => {
-        loader.style.opacity = '0'; // 淡出
-        setTimeout(() => {
-            loader.style.display = 'none'; // 彻底隐藏
-        }, 1000);
-    }, 2500);
-};
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 1000);
+    }, 2000); // 2秒后进入
+});
+
+// 2. 标签页切换逻辑
+function showTab(tabId) {
+    // 隐藏所有内容
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    // 取消所有按钮高亮
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // 显示选中的内容和按钮
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
