@@ -3,114 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ave Mujica x K-ON! Gallery</title>
+    <title>Ave Mujica / K-ON!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* 直接集成你提供的 CSS 核心风格 */
         :root {
-            --mujica-purple: rgba(30, 10, 40, 0.8);
-            --mujica-border: #4a2d5e;
-            --mujica-text: #e0d0f0;
+            /* 还原 CSS 中的字号和字重设定  */
+            --size: 18px; 
+            --font-weight: 650;
+            --main-purple: #8a4fff;
+            --dark-panel: rgba(10, 5, 15, 0.85);
         }
 
         body {
-            /* 模仿 CSS 中的背景遮罩和暗色调 */
-            background-color: #0a050f;
-            background-image: linear-gradient(135deg, #1a0a2a 0%, #050510 100%);
-            color: var(--mujica-text);
-            font-family: "Microsoft YaHei", sans-serif;
+            /* 模拟直播间全屏背景效果  */
+            background: #000;
+            background-image: linear-gradient(rgba(138, 79, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(138, 79, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #fff;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: var(--font-weight);
             margin: 0;
-            padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* 标题部分：参考 CSS 中的 .title-label 风格 */
+        /* 模仿 .content-panel 的外框感  */
+        .mujica-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        /* 还原标题的这种“控制台”质感  */
+        header {
+            border-left: 4px solid var(--main-purple);
+            padding-left: 15px;
+            margin-bottom: 40px;
+        }
+
         h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 15px #8a4fff;
-            border-bottom: 1px solid var(--mujica-border);
-            padding-bottom: 10px;
-            letter-spacing: 5px;
-            margin-bottom: 50px;
+            font-size: calc(var(--size) * 1.8);
+            letter-spacing: 4px;
+            margin: 0;
+            text-transform: uppercase;
         }
 
         .gallery {
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            max-width: 900px;
-            width: 100%;
+            gap: 30px;
         }
 
-        /* 模仿 CSS 中的 .chat-item 和面板质感 */
+        /* 核心：模仿 .event 和 .chat-item 的质感  */
         .card {
-            background: rgba(45, 20, 70, 0.3);
-            backdrop-filter: blur(10px); /* 磨砂玻璃 */
-            border: 1px solid var(--mujica-border);
-            border-radius: 4px; /* 偏向直角的硬朗风格 */
-            padding: 15px;
+            background: var(--dark-panel);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(138, 79, 255, 0.2);
+            padding: 10px;
+            position: relative;
+            transition: 0.3s;
+            /* 模仿脚本中的 order 逻辑，将信息进行模块化排版  */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--main-purple);
+            box-shadow: 0 0 25px rgba(138, 79, 255, 0.3);
+        }
+
+        /* 图片作为主体展示 */
+        .img-box {
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        /* 悬浮时产生类似直播间高亮的效果 */
-        .card:hover {
-            background: rgba(60, 30, 90, 0.5);
-            box-shadow: 0 0 30px rgba(138, 79, 255, 0.3);
-            border-color: #8a4fff;
+            border-bottom: 2px solid var(--main-purple);
         }
 
         img {
             width: 100%;
             height: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             display: block;
+            opacity: 0.9;
         }
 
-        /* 底部信息栏：参考 CSS 的通用文本颜色 */
-        .info {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #b0a0c0;
+        /* 模仿脚本底部的文字信息栏，如 .username 和 .price  */
+        .footer-info {
             display: flex;
             justify-content: space-between;
-            border-left: 3px solid #8a4fff;
-            padding-left: 10px;
+            padding: 12px 5px;
+            font-size: calc(var(--size) * 0.85);
+            color: #b0a0c0;
         }
 
-        /* 装饰元素 */
-        .card::before {
-            content: "DESTRUCTION";
+        .status-tag {
+            background-color: var(--main-purple);
+            color: #000;
+            padding: 2px 8px;
+            font-weight: 900;
+        }
+
+        /* 装饰性的边角代码 */
+        .decor {
             position: absolute;
-            top: 5px;
+            top: -10px;
             right: 10px;
             font-size: 10px;
-            color: rgba(138, 79, 255, 0.5);
-            font-weight: bold;
+            color: var(--main-purple);
+            background: #000;
+            padding: 0 5px;
         }
     </style>
 </head>
 <body>
 
-    <h1>AVE MUJICA // SECTOR</h1>
+    <div class="mujica-container">
+        <header>
+            <h1>Ave Mujica // Archive</h1>
+            <p style="font-size: 12px; opacity: 0.6; margin-top: 5px;">AVE MUJICA LIVE STREAM UI EMULATION</p>
+        </header>
 
-    <div class="gallery">
-        <div class="card">
-            <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="K-ON 1">
-            <div class="info">
-                <span>SUBJECT: HTT_GROUP</span>
-                <span>STATUS: ACTIVE</span>
+        <div class="gallery">
+            <div class="card">
+                <div class="decor">DATA_STREAM_01</div>
+                <div class="img-box">
+                    <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="Art 1">
+                </div>
+                <div class="footer-info">
+                    <span>UNIT: HTT-01</span>
+                    <span class="status-tag">MUJICA_ACCESS</span>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="K-ON 2">
-            <div class="info">
-                <span>SUBJECT: MUSIC_UNIT</span>
-                <span>STATUS: STANDBY</span>
+            <div class="card">
+                <div class="decor">DATA_STREAM_02</div>
+                <div class="img-box">
+                    <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="Art 2">
+                </div>
+                <div class="footer-info">
+                    <span>UNIT: MUSIC-02</span>
+                    <span class="status-tag">STAGING_READY</span>
+                </div>
             </div>
         </div>
     </div>
