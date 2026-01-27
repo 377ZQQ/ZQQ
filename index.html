@@ -1,37 +1,37 @@
-!DOCTYPE html
-html lang=zh-CN
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    title二次元幻想画廊title
-    link href=httpsfonts.googleapis.comcss2family=Noto+Sans+SCwght@300;500;700&display=swap rel=stylesheet
-    link rel=stylesheet href=style.css
-head
-body
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次元幻想画廊</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    header
-        div class=header-content
-            h1幻想画廊 span class=subtitleAnime Art Collectionspanh1
-            div class=upload-area
-                input type=file id=fileInput accept=image multiple hidden
-                label for=fileInput class=upload-btn
-                    svg xmlns=httpwww.w3.org2000svg width=20 height=20 viewBox=0 0 24 24 fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=roundpath d=M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4polyline points=17 8 12 3 7 8line x1=12 y1=3 x2=12 y2=15svg
+    <header>
+        <div class="header-content">
+            <h1>幻想画廊 <span class="subtitle">Anime Art Collection</span></h1>
+            <div class="upload-area">
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                <label for="fileInput" class="upload-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                     上传新作品
-                label
-            div
-        div
-    header
+                </label>
+            </div>
+        </div>
+    </header>
 
-    main
-        div class=gallery-grid id=gallery
-            div
-    main
+    <main>
+        <div class="gallery-grid" id="gallery">
+            </div>
+    </main>
 
-    div id=lightbox class=lightbox
-        span class=close-btn&times;span
-        img class=lightbox-content id=lightbox-img
-    div
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
 
-    script src=script.jsscript
-body
-html
+    <script src="script.js"></script>
+</body>
+</html>
