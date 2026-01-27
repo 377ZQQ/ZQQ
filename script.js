@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'img/saber1.png',
         'img/saber2.png',
         'img/saber3.png',
-        'img/saber4.png',
-        'img/avemujica直播间.png' 
+        'img/saber4.png'
     ];
 
     // 渲染图片的通用函数
@@ -60,3 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.close-btn').onclick = () => lightbox.style.display = 'none';
     lightbox.onclick = (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; };
 });
+
