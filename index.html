@@ -3,27 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-ON! 展示页</title>
+    <title>K-ON! 放课后茶会 ♪</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #e3f2fd; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        h1 { color: #01579b; border-bottom: 2px solid #01579b; padding-bottom: 10px; }
-        .gallery { display: flex; flex-direction: column; gap: 30px; align-items: center; width: 100%; max-width: 900px; }
-        .card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); width: 100%; }
-        img { width: 100%; height: auto; border-radius: 6px; display: block; }
-        p { text-align: center; color: #666; margin-top: 10px; font-weight: bold; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%); /* 甜美粉蓝渐变 */
+            font-family: 'Comic Neue', cursive, sans-serif; /* 二次元风格字体 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            color: #ff69b4; /* 樱花粉 */
+            font-size: 3.5em; /* 更大的标题 */
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        h1::after { /* 标题下方的装饰线 */
+            content: '♪';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffb6c1;
+            font-size: 1.2em;
+        }
+
+        .gallery {
+            display: grid; /* 使用网格布局，更灵活 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适应列数 */
+            gap: 30px; /* 卡片间距 */
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px; /* 更圆润的边角 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            animation: fadeIn 1s ease-out forwards; /* 淡入动画 */
+            opacity: 0; /* 初始隐藏 */
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02); /* 悬浮上移并放大 */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .card:nth-child(1) { animation-delay: 0.2s; } /* 错开动画时间 */
+        .card:nth-child(2) { animation-delay: 0.4s; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px; /* 图片圆角 */
+            display: block;
+            margin: 0 auto 15px auto; /* 图片下方间距 */
+            border: 3px solid #ffebee; /* 浅粉色边框 */
+        }
+
+        p {
+            color: #888;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        footer {
+            margin-top: 60px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
-    <h1>我的轻音少女收藏</h1>
+    <h1>K-ON! 放课后茶会 ♪</h1>
     <div class="gallery">
         <div class="card">
-            <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="K-On 1">
-            <p>放课后茶会 - 集合</p>
+            <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="K-On Group 1">
+            <p>活力四射的日常！</p>
         </div>
         <div class="card">
-            <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="K-On 2">
-            <p>K-ON!! 音乐主题</p>
+            <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="K-On Group 2">
+            <p>享受音乐的时刻！</p>
         </div>
     </div>
+    <footer>
+        © 2026 My K-On Gallery
+    </footer>
 </body>
 </html>
