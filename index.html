@@ -1,13 +1,189 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZQQ · 作品集</title>
+    <title>ZQQ Gallery</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= 主题变量 ================= */
+        :root {
+            --bg-color: #0a0a0c;
+            --bg-gradient-1: rgba(255,215,0,0.06);
+
+            --card-bg: #16161a;
+            --text-main: #ffffff;
+            --text-sub: #aaaaaa;
+
+            --accent: #ffd700;
+            --accent-soft: rgba(255,215,0,0.25);
+        }
+
+        /* 冷蓝主题 */
+        [data-theme="blue"] {
+            --bg-color: #070b12;
+            --bg-gradient-1: rgba(80,150,255,0.08);
+
+            --card-bg: #0f1623;
+            --text-main: #e6ecff;
+            --text-sub: #9aa7c7;
+
+            --accent: #5aa2ff;
+            --accent-soft: rgba(90,162,255,0.25);
+        }
+
+        /* ================= 全局 ================= */
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text-main);
+            background:
+                radial-gradient(1200px 600px at 50% -20%, var(--bg-gradient-1), transparent 40%),
+                linear-gradient(180deg, var(--bg-color), #050507);
+            transition: background 0.6s ease, color 0.4s ease;
+        }
+
+        /* ================= Header ================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            background: rgba(20, 20, 25, 0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 26px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-group h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.85;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-main);
+            font-size: 18px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .upload-btn {
+            background: var(--accent);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-btn:hover {
+            transform: scale(1.05);
+            background: #fff;
+        }
+
+        /* ================= Gallery ================= */
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            cursor: pointer;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.55);
+            transition: 0.35s ease;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 60px var(--accent-soft);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= 动画 ================= */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ================= Lightbox ================= */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 48px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
@@ -20,25 +196,71 @@
         <div class="header-actions">
             <button id="themeToggle" class="theme-btn">🌙</button>
 
-            <div class="upload-area">
-                <input type="file" id="fileInput" accept="image/*" multiple hidden>
-                <label for="fileInput" class="upload-btn">上传新作品</label>
-            </div>
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            <label for="fileInput" class="upload-btn">上传新作品</label>
         </div>
     </div>
 </header>
 
+<main class="gallery-grid" id="gallery"></main>
 
-<main>
-    <section class="gallery-grid" id="gallery"></section>
-</main>
-
-<div id="lightbox" class="lightbox">
-    <span class="close-btn">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
+<div class="lightbox" id="lightbox">
+    <span class="close-btn" id="closeLightbox">×</span>
+    <img id="lightboxImg" src="" alt="preview">
 </div>
 
-<script src="script.js"></script>
+<script>
+    /* ================= 主题切换 ================= */
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'blue') {
+        document.documentElement.setAttribute('data-theme', 'blue');
+        themeBtn.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+        const isBlue = document.documentElement.getAttribute('data-theme') === 'blue';
+
+        if (isBlue) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            themeBtn.textContent = '🌙';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'blue');
+            localStorage.setItem('theme', 'blue');
+            themeBtn.textContent = '☀️';
+        }
+    });
+
+    /* ================= 图片上传 & 灯箱 ================= */
+    const fileInput = document.getElementById('fileInput');
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeLightbox = document.getElementById('closeLightbox');
+
+    fileInput.addEventListener('change', () => {
+        [...fileInput.files].forEach(file => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `<img src="${e.target.result}">`;
+                div.onclick = () => {
+                    lightboxImg.src = e.target.result;
+                    lightbox.style.display = 'flex';
+                };
+                gallery.prepend(div);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    closeLightbox.onclick = () => lightbox.style.display = 'none';
+    lightbox.onclick = e => { if (e.target === lightbox) lightbox.style.display = 'none'; };
+</script>
+
 </body>
 </html>
-
+```
