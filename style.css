@@ -1,33 +1,76 @@
 :root {
-    --bg-color: #0f0f0f;
-    --accent-color: #ffd700;
+    --bg-color: #0a0a0c;
+    --card-bg: #16161a;
+    --accent: #ffd700;
 }
+
 body {
-    margin: 0; font-family: 'Noto Sans SC', sans-serif;
-    background: var(--bg-color); color: white;
+    background-color: var(--bg-color);
+    color: white;
+    margin: 0;
+    font-family: 'Noto Sans SC', sans-serif;
 }
+
 header {
-    padding: 20px 5%; background: rgba(30,30,30,0.9);
+    background: rgba(20, 20, 25, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 30px 5%;
+    border-bottom: 1px solid #333;
+    position: sticky; top: 0; z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
-    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
 }
+
 .upload-btn {
-    background: var(--accent-color); color: black; padding: 10px 20px;
-    border-radius: 25px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #000;
+    padding: 12px 24px; border-radius: 8px;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
 }
+
+.upload-btn:hover { transform: scale(1.05); background: #fff; }
+
 .gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px; padding: 40px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 50px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
+
 .gallery-item {
-    border-radius: 15px; overflow: hidden; cursor: pointer;
-    transition: transform 0.3s; background: #222; aspect-ratio: 3/4;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    aspect-ratio: 3/4;
 }
-.gallery-item:hover { transform: translateY(-10px); outline: 2px solid var(--accent-color); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* 进场动画 */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 灯箱效果 */
 .lightbox {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center;
+    display: none; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+    z-index: 1000; justify-content: center; align-items: center;
 }
-.lightbox-content { max-width: 90%; max-height: 90%; border-radius: 10px; }
-.close-btn { position: absolute; top: 20px; right: 40px; font-size: 40px; cursor: pointer; }
+.lightbox-content { max-width: 90%; max-height: 90%; border: 2px solid #444; }
+.close-btn { position: absolute; top: 30px; right: 50px; font-size: 50px; cursor: pointer; }
