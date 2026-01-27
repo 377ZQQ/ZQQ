@@ -160,3 +160,16 @@ header {
     to { opacity: 1; transform: translateY(0); }
 }
 
+[data-theme="blue"] {
+    --bg-color: #070b12;
+    --bg-gradient-1: rgba(80,150,255,0.08);
+
+    --card-bg: #0f1623;
+    --text-main: #e6ecff;
+    --text-sub: #9aa7c7;
+
+    --accent: #5aa2ff;
+    --accent-soft: rgba(90,162,255,0.25);
+}
+
+
