@@ -1,26 +1,57 @@
-<div class="site-wrapper">
-    <div class="background-layer" style="background-image: url('img/avemujica直播间.png');"></div>
-    
-    <div class="overlay-decor"></div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ave Mujica | 迷宫案内</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/danmaku.css">
+</head>
+<body>
 
-    <main class="glass-card">
+    <div id="loader">
+        <img src="img/载入页1.png" alt="Loading">
+    </div>
+
+    <div class="video-bg">
+        <img src="img/avemujica直播间.png" alt="BG">
+    </div>
+
+    <div class="glass-container">
         <aside class="sidebar">
-            <div class="avatar-container">
-                <img src="img/载入页2.png" alt="Avatar">
+            <div class="avatar">
+                <img src="img/载入页2.png" alt="Logo">
             </div>
-            <nav class="menu">
-                <a href="#home" class="active">舞台</a>
-                <a href="#members">角色</a>
-                <a href="#about">关于</a>
+            <nav>
+                <a href="javascript:void(0)" class="nav-item active" onclick="showTab('home')">首页</a>
+                <a href="javascript:void(0)" class="nav-item" onclick="showTab('members')">乐团成员</a>
+                <a href="javascript:void(0)" class="nav-item" onclick="showTab('live')">弹幕样式预览</a>
             </nav>
         </aside>
 
-        <section class="content">
-            <div class="content-item active" id="home">
-                <h1>Ave Mujica</h1>
-                <p>若要步入这边的世界，就请舍弃一切。</p>
-                <div class="chat-preview">...</div>
+        <main class="content">
+            <div id="home" class="tab-content active">
+                <h1 class="title">Ave Mujica</h1>
+                <hr>
+                <p class="desc">若要步入这边的世界，就请舍弃一切。</p>
+                <div class="quote">“这是只有我们才存在的舞台。”</div>
             </div>
-        </section>
-    </main>
-</div>
+
+            <div id="live" class="tab-content">
+                <h2 class="title">弹幕机预览</h2>
+                <div class="danmaku-preview">
+                    <div class="event event--message">
+                        <div class="avatar-wrap"><img src="img/载入页2.png" style="width:100%"></div>
+                        <div class="content-box">
+                            <span class="username">祥子</span>
+                            <div class="message">准备好迎接迷宫了吗？</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
