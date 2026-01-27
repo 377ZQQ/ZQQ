@@ -1,8 +1,15 @@
 :root {
     --bg-color: #0a0a0c;
+    --bg-gradient-1: rgba(255,215,0,0.06);
+
     --card-bg: #16161a;
+    --text-main: #ffffff;
+    --text-sub: #aaaaaa;
+
     --accent: #ffd700;
+    --accent-soft: rgba(255,215,0,0.25);
 }
+
 
 * {
     box-sizing: border-box;
@@ -152,3 +159,4 @@ header {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
