@@ -1,187 +1,33 @@
-/* === 全局设置 === */
 :root {
-    --bg-color: #121212; /* 深色背景 */
-    --card-bg: #1e1e1e;  /* 卡片背景 */
-    --text-light: #e0e0e0;
-    --accent-color: #f1c40f; /* 金色强调色 */
+    --bg-color: #0f0f0f;
+    --accent-color: #ffd700;
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Noto Sans SC', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-light);
-    line-height: 1.6;
-    /* 一个微妙的背景渐变 */
-    background-image: radial-gradient(circle at top center, #2a2a2a 0%, #121212 70%);
-    min-height: 100vh;
+    margin: 0; font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg-color); color: white;
 }
-
-/* === 页头设计 === */
 header {
-    padding: 2rem 5%;
-    background: rgba(30, 30, 30, 0.8);
-    backdrop-filter: blur(10px); /* 毛玻璃效果 */
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 20px 5%; background: rgba(30,30,30,0.9);
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
 }
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-h1 {
-    font-weight: 300;
-    letter-spacing: 2px;
-}
-
-.subtitle {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--accent-color);
-    font-weight: 500;
-    margin-top: 5px;
-}
-
-/* === 上传按钮设计 === */
 .upload-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--accent-color);
-    color: #121212;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+    background: var(--accent-color); color: black; padding: 10px 20px;
+    border-radius: 25px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px;
 }
-
-.upload-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(241, 196, 15, 0.5);
-    background-color: #ffd700;
-}
-
-/* === 画廊网格布局 === */
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 5%;
-}
-
 .gallery-grid {
-    display: grid;
-    /* 响应式列数：最小250px宽，自动填充 */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px; padding: 40px 5%;
 }
-
-/* 图片卡片设计 */
 .gallery-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 2 / 3; /* 统一图片比例为竖屏，显得更修长 */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    background: var(--card-bg);
+    border-radius: 15px; overflow: hidden; cursor: pointer;
+    transition: transform 0.3s; background: #222; aspect-ratio: 3/4;
 }
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 保持比例填充，裁剪多余部分 */
-    transition: transform 0.5s ease;
-}
-
-/* 悬停交互效果 */
-.gallery-item::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    border: 2px solid var(--accent-color);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1); /* 图片轻微放大 */
-}
-
-.gallery-item:hover::after {
-    opacity: 1;
-}
-
-/* 新上传图片的进入动画 */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.newly-added {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-
-/* === 灯箱 (大图查看) === */
+.gallery-item:hover { transform: translateY(-10px); outline: 2px solid var(--accent-color); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 .lightbox {
-    display: none; /* 默认隐藏 */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    backdrop-filter: blur(5px);
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center;
 }
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-    from {transform: scale(0.8); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: #fff;
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close-btn:hover {
-    color: var(--accent-color);
-}
+.lightbox-content { max-width: 90%; max-height: 90%; border-radius: 10px; }
+.close-btn { position: absolute; top: 20px; right: 40px; font-size: 40px; cursor: pointer; }
