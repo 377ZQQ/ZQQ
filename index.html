@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>幻想画廊</title>
+    <title>我的画廊</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>幻想画廊</h1>
-        <p class="subtitle">Anime Art Collection</p>
+        <div class="header-content">
+            <h1>作品集 <span class="subtitle">Art Collection</span></h1>
+            <div class="upload-area">
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                <label for="fileInput" class="upload-btn">上传新作品</label>
+            </div>
+        </div>
     </header>
 
-    <section class="section-container">
-        <h2 class="section-title"><span>01</span> 作品陈列馆</h2>
-        <div class="gallery-grid" id="static-gallery"></div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section class="section-container">
-        <h2 class="section-title"><span>02</span> 创作投递处</h2>
-        <div class="upload-box">
-            <input type="file" id="fileInput" accept="image/*" multiple hidden>
-            <label for="fileInput" class="upload-btn">上传新作品</label>
-        </div>
-        <div class="gallery-grid" id="preview-gallery"></div>
-    </section>
+    <main>
+        <div class="gallery-grid" id="gallery"></div>
+    </main>
 
     <div id="lightbox" class="lightbox">
         <span class="close-btn">&times;</span>
