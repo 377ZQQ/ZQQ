@@ -1,43 +1,82 @@
-/* 容器全屏并居中 */
-.site-wrapper {
-    width: 100vw;
+/* 全局基础设置 */
+* { margin: 0; padding: 0; box-box: border-box; }
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #fff;
+    background-color: #000;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px; /* 增加一点 3D 深度感 */
+    overflow: hidden;
 }
 
-/* 毛玻璃卡片效果 */
-.glass-card {
-    display: flex;
-    width: 80%;
-    max-width: 1000px;
-    height: 600px;
-    background: rgba(0, 0, 0, 0.6); /* 半透明黑 */
-    backdrop-filter: blur(10px);    /* 核心：模糊背景 */
+/* 背景图层 */
+.video-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+.video-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+
+/* 加载层 */
+#loader {
+    position: fixed;
+    z-index: 999;
+    width: 100%; height: 100%;
+    background: #000;
+    display: flex; justify-content: center; align-items: center;
+    transition: 1s ease;
+}
+#loader img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 核心毛玻璃容器 */
+.glass-container {
+    width: 85vw;
+    height: 80vh;
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(15px); /* 模糊背景，制造高级感 */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    overflow: hidden;
-    z-index: 10;
+    display: flex;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    animation: fadeIn 1.5s ease;
 }
 
-/* 左侧侧边栏 */
+/* 侧边栏 */
 .sidebar {
-    width: 250px;
-    background: rgba(255, 255, 255, 0.05);
+    width: 260px;
+    background: rgba(0, 0, 0, 0.3);
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-/* 侧边栏头像 */
-.avatar-container img {
-    width: 120px;
-    height: 120px;
+.avatar img {
+    width: 140px; height: 140px;
     border-radius: 50%;
-    border: 3px solid #7a0000; /* Ave Mujica 的暗红色 */
-    box-shadow: 0 0 15px #7a0000;
+    border: 2px solid #5a0000;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px #5a0000;
 }
+.nav-item {
+    color: #aaa;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.nav-item:hover, .nav-item.active { color: #fff; text-shadow: 0 0 10px #fff; }
+
+/* 内容区 */
+.content { flex: 1; padding: 60px; overflow-y: auto; }
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: slideUp 0.5s ease; }
+
+.title { font-size: 48px; letter-spacing: 5px; color: #fff; margin-bottom: 10px; }
+.desc { font-size: 20px; color: #ccc; margin: 20px 0; }
+.quote { font-style: italic; border-left: 4px solid #5a0000; padding-left: 15px; color: #888; }
+
+/* 动画 */
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
