@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>幻想画廊 | Art Collection</title>
+    <title>幻想画廊</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <h1>幻想画廊</h1>
-        <p class="subtitle">舞台已经准备就绪，请开始你的表演</p>
+        <p class="subtitle">Anime Art Collection</p>
     </header>
 
-    <section class="section-container" id="existing-works">
+    <section class="section-container">
         <h2 class="section-title"><span>01</span> 作品陈列馆</h2>
-        <div class="gallery-grid" id="static-gallery">
-            </div>
+        <div class="gallery-grid" id="static-gallery"></div>
     </section>
 
     <div class="divider"></div>
 
-    <section class="section-container" id="upload-center">
+    <section class="section-container">
         <h2 class="section-title"><span>02</span> 创作投递处</h2>
         <div class="upload-box">
             <input type="file" id="fileInput" accept="image/*" multiple hidden>
-            <label for="fileInput" class="upload-btn">
-                <span>上传新作品</span>
-            </label>
-            <p class="upload-tip">支持 JPG, PNG, GIF | 预览将显示在下方</p>
+            <label for="fileInput" class="upload-btn">上传新作品</label>
         </div>
         <div class="gallery-grid" id="preview-gallery"></div>
     </section>
