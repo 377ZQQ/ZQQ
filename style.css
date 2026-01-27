@@ -18,11 +18,17 @@
 body {
     margin: 0;
     font-family: 'Noto Sans SC', sans-serif;
-    color: #fff;
+    color: var(--text-main);
     background:
-        radial-gradient(1200px 600px at 50% -20%, rgba(255,215,0,0.06), transparent 40%),
-        linear-gradient(180deg, #0a0a0c, #050507);
+        radial-gradient(
+            1200px 600px at 50% -20%,
+            var(--bg-gradient-1),
+            transparent 40%
+        ),
+        linear-gradient(180deg, var(--bg-color), #050507);
+    transition: background 0.6s ease, color 0.4s ease;
 }
+
 
 /* Header */
 
@@ -171,5 +177,6 @@ header {
     --accent: #5aa2ff;
     --accent-soft: rgba(90,162,255,0.25);
 }
+
 
 
