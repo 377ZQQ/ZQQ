@@ -3,153 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ave Mujica / K-ON!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* 还原 CSS 中的字号和字重设定  */
-            --size: 18px; 
-            --font-weight: 650;
-            --main-purple: #8a4fff;
-            --dark-panel: rgba(10, 5, 15, 0.85);
-        }
-
-        body {
-            /* 模拟直播间全屏背景效果  */
-            background: #000;
-            background-image: linear-gradient(rgba(138, 79, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(138, 79, 255, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #fff;
-            font-family: 'Noto Sans SC', sans-serif;
-            font-weight: var(--font-weight);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* 模仿 .content-panel 的外框感  */
-        .mujica-container {
-            width: 100%;
-            max-width: 800px;
-            margin-top: 50px;
-            padding: 20px;
-        }
-
-        /* 还原标题的这种“控制台”质感  */
-        header {
-            border-left: 4px solid var(--main-purple);
-            padding-left: 15px;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: calc(var(--size) * 1.8);
-            letter-spacing: 4px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        /* 核心：模仿 .event 和 .chat-item 的质感  */
-        .card {
-            background: var(--dark-panel);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(138, 79, 255, 0.2);
-            padding: 10px;
-            position: relative;
-            transition: 0.3s;
-            /* 模仿脚本中的 order 逻辑，将信息进行模块化排版  */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            border-color: var(--main-purple);
-            box-shadow: 0 0 25px rgba(138, 79, 255, 0.3);
-        }
-
-        /* 图片作为主体展示 */
-        .img-box {
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid var(--main-purple);
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.9;
-        }
-
-        /* 模仿脚本底部的文字信息栏，如 .username 和 .price  */
-        .footer-info {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 5px;
-            font-size: calc(var(--size) * 0.85);
-            color: #b0a0c0;
-        }
-
-        .status-tag {
-            background-color: var(--main-purple);
-            color: #000;
-            padding: 2px 8px;
-            font-weight: 900;
-        }
-
-        /* 装饰性的边角代码 */
-        .decor {
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            font-size: 10px;
-            color: var(--main-purple);
-            background: #000;
-            padding: 0 5px;
-        }
-    </style>
+    <title>Ave Mujica - 舞台开幕</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/danmaku.css">
 </head>
 <body>
 
-    <div class="mujica-container">
-        <header>
-            <h1>Ave Mujica // Archive</h1>
-            <p style="font-size: 12px; opacity: 0.6; margin-top: 5px;">AVE MUJICA LIVE STREAM UI EMULATION</p>
-        </header>
+    <div id="loader" class="loader-layer">
+        <img src="img/载入页1.png" alt="Loading" class="loading-img">
+    </div>
 
-        <div class="gallery">
-            <div class="card">
-                <div class="decor">DATA_STREAM_01</div>
-                <div class="img-box">
-                    <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="Art 1">
-                </div>
-                <div class="footer-info">
-                    <span>UNIT: HTT-01</span>
-                    <span class="status-tag">MUJICA_ACCESS</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="decor">DATA_STREAM_02</div>
-                <div class="img-box">
-                    <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="Art 2">
-                </div>
-                <div class="footer-info">
-                    <span>UNIT: MUSIC-02</span>
-                    <span class="status-tag">STAGING_READY</span>
-                </div>
+    <div class="main-stage">
+        <img src="img/avemujica直播间.png" alt="Background" class="bg-image">
+        
+        <div id="log-container" class="danmaku-box">
+            <div class="event">
+                <div class="message">祥子：若要步入这边的世界，就请舍弃一切。</div>
             </div>
         </div>
     </div>
 
+    <script src="js/main.js"></script>
 </body>
 </html>
