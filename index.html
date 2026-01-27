@@ -3,105 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-ON! 放课后茶会 ♪</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <title>ARKNIGHTS STYLE GALLERY</title>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* 导入方舟常用的黑体感字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap');
 
         body {
-            background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%); /* 甜美粉蓝渐变 */
-            font-family: 'Comic Neue', cursive, sans-serif; /* 二次元风格字体 */
+            background-color: #1a1a1a; /* 深色背景 */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px; /* 工业背景格线 */
+            color: #ffffff;
+            font-family: 'Oswald', 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
-            margin: 0;
-            min-height: 100vh;
-            color: #333;
+        }
+
+        /* 方舟标志性的顶部装饰条 */
+        header {
+            width: 100%;
+            max-width: 1000px;
+            border-left: 8px solid #ffcf00; /* 方舟黄 */
+            padding-left: 15px;
+            margin-bottom: 50px;
+            position: relative;
         }
 
         h1 {
-            color: #ff69b4; /* 樱花粉 */
-            font-size: 3.5em; /* 更大的标题 */
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            position: relative;
-            padding-bottom: 15px;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
-        h1::after { /* 标题下方的装饰线 */
-            content: '♪';
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #ffcf00;
+            letter-spacing: 4px;
+        }
+
+        /* 装饰用的三角点缀 */
+        .decor-dot {
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ffb6c1;
-            font-size: 1.2em;
+            right: 0;
+            top: 0;
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            text-align: right;
         }
 
         .gallery {
-            display: grid; /* 使用网格布局，更灵活 */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适应列数 */
-            gap: 30px; /* 卡片间距 */
-            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
             width: 100%;
         }
 
+        /* 仿方舟干员立绘卡片 */
         .card {
-            background: white;
-            padding: 20px;
-            border-radius: 20px; /* 更圆润的边角 */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            animation: fadeIn 1s ease-out forwards; /* 淡入动画 */
-            opacity: 0; /* 初始隐藏 */
+            position: relative;
+            background: rgba(40, 40, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px;
+            /* 关键：切角效果 */
+            clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+            transition: all 0.3s ease;
         }
+
         .card:hover {
-            transform: translateY(-8px) scale(1.02); /* 悬浮上移并放大 */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: #ffcf00;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 207, 0, 0.2);
         }
-        .card:nth-child(1) { animation-delay: 0.2s; } /* 错开动画时间 */
-        .card:nth-child(2) { animation-delay: 0.4s; }
+
+        .card-inner {
+            background: #121212;
+            padding: 10px;
+            clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+        }
 
         img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border-radius: 12px; /* 图片圆角 */
-            display: block;
-            margin: 0 auto 15px auto; /* 图片下方间距 */
-            border: 3px solid #ffebee; /* 浅粉色边框 */
+            filter: grayscale(20%); /* 略微降低饱和度增加质感 */
+            transition: 0.5s;
         }
 
-        p {
-            color: #888;
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-top: 0;
+        .card:hover img {
+            filter: grayscale(0%);
         }
-        footer {
-            margin-top: 60px;
-            color: #aaa;
-            font-size: 0.9em;
+
+        /* 卡片底部的信息栏 */
+        .info-bar {
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag {
+            background: #ffcf00;
+            color: #000;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .code {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
         }
     </style>
 </head>
 <body>
-    <h1>K-ON! 放课后茶会 ♪</h1>
+
+    <header>
+        <h1>Archive / Operation: K-ON!</h1>
+        <div class="subtitle">罗德岛档案库 - 樱丘支部</div>
+        <div class="decor-dot">SYSTEM READY<br>ACCESS GRANTED</div>
+    </header>
+
     <div class="gallery">
         <div class="card">
-            <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="K-On Group 1">
-            <p>活力四射的日常！</p>
+            <div class="card-inner">
+                <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="Art 1">
+                <div class="info-bar">
+                    <span class="tag">TOP SECRET</span>
+                    <span class="code">ID: 001-HTT</span>
+                </div>
+            </div>
         </div>
         <div class="card">
-            <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="K-On Group 2">
-            <p>享受音乐的时刻！</p>
+            <div class="card-inner">
+                <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="Art 2">
+                <div class="info-bar">
+                    <span class="tag">PROMOTED</span>
+                    <span class="code">ID: 002-MUSIC</span>
+                </div>
+            </div>
         </div>
     </div>
-    <footer>
-        © 2026 My K-On Gallery
-    </footer>
+
 </body>
 </html>
