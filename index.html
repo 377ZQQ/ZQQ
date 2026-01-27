@@ -3,150 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARKNIGHTS STYLE GALLERY</title>
+    <title>Ave Mujica x K-ON! Gallery</title>
     <style>
-        /* 导入方舟常用的黑体感字体 */
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap');
+        /* 直接集成你提供的 CSS 核心风格 */
+        :root {
+            --mujica-purple: rgba(30, 10, 40, 0.8);
+            --mujica-border: #4a2d5e;
+            --mujica-text: #e0d0f0;
+        }
 
         body {
-            background-color: #1a1a1a; /* 深色背景 */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px; /* 工业背景格线 */
-            color: #ffffff;
-            font-family: 'Oswald', 'Noto Sans SC', sans-serif;
+            /* 模仿 CSS 中的背景遮罩和暗色调 */
+            background-color: #0a050f;
+            background-image: linear-gradient(135deg, #1a0a2a 0%, #050510 100%);
+            color: var(--mujica-text);
+            font-family: "Microsoft YaHei", sans-serif;
             margin: 0;
             padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* 方舟标志性的顶部装饰条 */
-        header {
-            width: 100%;
-            max-width: 1000px;
-            border-left: 8px solid #ffcf00; /* 方舟黄 */
-            padding-left: 15px;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
+        /* 标题部分：参考 CSS 中的 .title-label 风格 */
         h1 {
             font-size: 2.5rem;
-            margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            color: #ffcf00;
-            letter-spacing: 4px;
-        }
-
-        /* 装饰用的三角点缀 */
-        .decor-dot {
-            position: absolute;
-            right: 0;
-            top: 0;
-            font-size: 12px;
-            color: rgba(255,255,255,0.3);
-            text-align: right;
+            text-shadow: 0 0 15px #8a4fff;
+            border-bottom: 1px solid var(--mujica-border);
+            padding-bottom: 10px;
+            letter-spacing: 5px;
+            margin-bottom: 50px;
         }
 
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 40px;
-            max-width: 1100px;
+            max-width: 900px;
             width: 100%;
         }
 
-        /* 仿方舟干员立绘卡片 */
+        /* 模仿 CSS 中的 .chat-item 和面板质感 */
         .card {
+            background: rgba(45, 20, 70, 0.3);
+            backdrop-filter: blur(10px); /* 磨砂玻璃 */
+            border: 1px solid var(--mujica-border);
+            border-radius: 4px; /* 偏向直角的硬朗风格 */
+            padding: 15px;
             position: relative;
-            background: rgba(40, 40, 40, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 5px;
-            /* 关键：切角效果 */
-            clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
-            transition: all 0.3s ease;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
 
+        /* 悬浮时产生类似直播间高亮的效果 */
         .card:hover {
-            border-color: #ffcf00;
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(255, 207, 0, 0.2);
-        }
-
-        .card-inner {
-            background: #121212;
-            padding: 10px;
-            clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+            background: rgba(60, 30, 90, 0.5);
+            box-shadow: 0 0 30px rgba(138, 79, 255, 0.3);
+            border-color: #8a4fff;
         }
 
         img {
             width: 100%;
             height: auto;
-            filter: grayscale(20%); /* 略微降低饱和度增加质感 */
-            transition: 0.5s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: block;
         }
 
-        .card:hover img {
-            filter: grayscale(0%);
-        }
-
-        /* 卡片底部的信息栏 */
-        .info-bar {
-            margin-top: 10px;
-            padding: 10px;
-            border-top: 2px solid #333;
+        /* 底部信息栏：参考 CSS 的通用文本颜色 */
+        .info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #b0a0c0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            border-left: 3px solid #8a4fff;
+            padding-left: 10px;
         }
 
-        .tag {
-            background: #ffcf00;
-            color: #000;
-            padding: 2px 8px;
+        /* 装饰元素 */
+        .card::before {
+            content: "DESTRUCTION";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: rgba(138, 79, 255, 0.5);
             font-weight: bold;
-            font-size: 0.8rem;
-        }
-
-        .code {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.7rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Archive / Operation: K-ON!</h1>
-        <div class="subtitle">罗德岛档案库 - 樱丘支部</div>
-        <div class="decor-dot">SYSTEM READY<br>ACCESS GRANTED</div>
-    </header>
+    <h1>AVE MUJICA // SECTOR</h1>
 
     <div class="gallery">
         <div class="card">
-            <div class="card-inner">
-                <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="Art 1">
-                <div class="info-bar">
-                    <span class="tag">TOP SECRET</span>
-                    <span class="code">ID: 001-HTT</span>
-                </div>
+            <img src="img-1754359231623e26b044d67e45c4b16b3d5dc2c170abf.jpg" alt="K-ON 1">
+            <div class="info">
+                <span>SUBJECT: HTT_GROUP</span>
+                <span>STATUS: ACTIVE</span>
             </div>
         </div>
+
         <div class="card">
-            <div class="card-inner">
-                <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="Art 2">
-                <div class="info-bar">
-                    <span class="tag">PROMOTED</span>
-                    <span class="code">ID: 002-MUSIC</span>
-                </div>
+            <img src="img-1754359487008459ef81c77935bbdcc848b04fff6e261.jpg" alt="K-ON 2">
+            <div class="info">
+                <span>SUBJECT: MUSIC_UNIT</span>
+                <span>STATUS: STANDBY</span>
             </div>
         </div>
     </div>
