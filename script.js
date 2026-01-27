@@ -47,3 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === lightbox) lightbox.classList.remove('active');
     };
 });
+
+// ================= 主题切换 =================
+
+const themeBtn = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+
+// 启动时恢复主题
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeBtn.textContent = savedTheme === 'blue' ? '☀️' : '🌙';
+}
+
+themeBtn.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+
+    if (currentTheme === 'blue') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeBtn.textContent = '🌙';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'blue');
+        localStorage.setItem('theme', 'blue');
+        themeBtn.textContent = '☀️';
+    }
+});
