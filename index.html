@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的画廊</title>
+    <title>ZQQ · 作品集</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>作品集 <span class="subtitle">Art Collection</span></h1>
-            <div class="upload-area">
-                <input type="file" id="fileInput" accept="image/*" multiple hidden>
-                <label for="fileInput" class="upload-btn">上传新作品</label>
-            </div>
+<header>
+    <div class="header-content">
+        <div class="title-group">
+            <h1>作品集</h1>
+            <span class="subtitle">Art Collection</span>
         </div>
-    </header>
 
-    <main>
-        <div class="gallery-grid" id="gallery"></div>
-    </main>
-
-    <div id="lightbox" class="lightbox">
-        <span class="close-btn">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+        <div class="upload-area">
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            <label for="fileInput" class="upload-btn">上传新作品</label>
+        </div>
     </div>
+</header>
 
-    <script src="script.js"></script>
+<main>
+    <section class="gallery-grid" id="gallery"></section>
+</main>
+
+<div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
